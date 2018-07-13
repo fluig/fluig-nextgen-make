@@ -39,6 +39,11 @@ pom:
 maven:
 	mvn clean install
 
+# Rule "maven:monitor"
+.PHONY: maven\:monitor
+maven\:monitor:
+	mvn clean install -Pmonitoring
+
 # Rule "docker"
 .PHONY: docker
 docker:
@@ -54,6 +59,10 @@ docker:
 # Rule "build"
 .PHONY: build
 build: maven docker
+
+# Rule "build:monitor"
+.PHONY: build\:monitor
+build\:monitor: maven\:monitor docker
 
 # Rule "gitpull"
 .PHONY: gitpull
