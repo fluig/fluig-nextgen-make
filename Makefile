@@ -17,7 +17,6 @@ docker:
 	cd fluig-communication/docker && make build:local && cd ../..
 	cd fluig-i18n/docker && make build:local && cd ../..
 	cd fluig-demo/docker && make build && cd ../..
-	cd docker/nginx && make build && cd ../..
 
 # Rule "build"
 .PHONY: build
