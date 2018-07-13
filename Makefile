@@ -13,10 +13,14 @@ maven:
 # Rule "docker"
 .PHONY: docker
 docker:
-	cd fluig-discovery/docker && make build:local && cd ../..
-	cd fluig-communication/docker && make build:local && cd ../..
-	cd fluig-i18n/docker && make build:local && cd ../..
-	cd fluig-demo/docker && make build && cd ../..
+	@for f in *; do \
+		if [ -d $${f}/docker ]; then \
+			echo $$f; \
+			echo "==================================="; \
+			cd $$f/docker && make build:local && cd ../..; \
+			echo " "; \
+		fi \
+	done
 
 # Rule "build"
 .PHONY: build
