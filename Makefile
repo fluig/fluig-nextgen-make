@@ -103,6 +103,30 @@ gitbranch:
 		fi \
 	done
 
+# Rule "gitclean"
+.PHONY: gitclean
+gitclean:
+	@for f in *; do \
+                if [ -d $${f}/.git ]; then \
+                        echo $$f; \
+                        echo "==================================="; \
+                        cd $$f && git clean -fd && cd ..; \
+                        echo " "; \
+                fi \
+        done
+
+# Rule "gitmaster"
+.PHONY: gitmaster
+gitmaster:
+	@for f in *; do \
+                if [ -d $${f}/.git ]; then \
+                        echo $$f; \
+                        echo "==================================="; \
+                        cd $$f && git checkout master && cd ..; \
+                        echo " "; \
+                fi \
+        done
+
 # Rule "run-db"
 .PHONY: run-db
 run-db:
